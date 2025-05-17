@@ -3,52 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kusoft.fun | 让我们建立一个科技社区</title>
+    <title>NovBytes | 我的作品集</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- 自定义动画 -->
+    <!-- AOS 动画库 -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- 自定义样式 -->
     <style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .fade-in {
-            animation: fadeIn 1s ease-out forwards;
-        }
-        
-        .delay-100 {
-            animation-delay: 0.1s;
-        }
-        
-        .delay-200 {
-            animation-delay: 0.2s;
-        }
-        
-        .delay-300 {
-            animation-delay: 0.3s;
+        body {
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
         }
         
         .project-card {
             transition: all 0.3s ease;
-            transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
         .project-card:hover {
-            transform: perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.03);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        .project-overlay {
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-        }
-        
-        .project-card:hover .project-overlay {
-            opacity: 1;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
         }
         
         .nav-link {
@@ -69,71 +44,135 @@
         .nav-link:hover::after {
             width: 100%;
         }
-        
-        .btn-hover {
-            transition: all 0.3s ease;
-            transform: translateY(0);
-        }
-        
-        .btn-hover:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
     </style>
 </head>
-<body class="bg-gray-50 font-sans antialiased">
-    <!-- 页眉 -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-gray-800 fade-in">
-                <span class="text-blue-500">Kusoft</span>.fun | 让我们建立一个科技社区
+            <h1 class="text-2xl font-bold text-gray-800">
+                <span class="text-blue-500">Nov</span>Bytes
             </h1>
-            
-            <!-- 导航栏 - 桌面版 -->
-            <nav class="hidden md:block fade-in delay-100">
-                <ul class="flex space-x-8">
-                    <li><a href="#about" class="nav-link text-gray-600 hover:text-blue-500 transition">关于</a></li>
-                    <li><a href="#projects" class="nav-link text-gray-600 hover:text-blue-500 transition">项目</a></li>
-                    <li><a href="#contact" class="nav-link text-gray-600 hover:text-blue-500 transition">联系方式</a></li>
-                </ul>
-            </nav>
-            
-            <!-- 移动菜单按钮 -->
-            <button class="md:hidden text-gray-600 focus:outline-none fade-in delay-100" id="menu-toggle">
+            <div class="hidden md:flex space-x-6">
+                <a href="#projects" class="nav-link text-gray-600 hover:text-blue-500">项目</a>
+                <a href="#about" class="nav-link text-gray-600 hover:text-blue-500">关于</a>
+                <a href="#learning" class="nav-link text-gray-600 hover:text-blue-500">学习</a>
+            </div>
+            <button class="md:hidden text-gray-600 focus:outline-none" id="menu-toggle">
                 <i class="fas fa-bars text-2xl"></i>
             </button>
         </div>
-        
-        <!-- 导航栏 - 移动版 -->
+        <!-- 移动菜单 -->
         <div class="md:hidden hidden bg-white py-2 px-4 shadow-md" id="mobile-menu">
             <ul class="flex flex-col space-y-3">
-                <li><a href="#about" class="block py-2 text-gray-600 hover:text-blue-500 transition">关于</a></li>
-                <li><a href="#projects" class="block py-2 text-gray-600 hover:text-blue-500 transition">项目</a></li>
-                <li><a href="#contact" class="block py-2 text-gray-600 hover:text-blue-500 transition">联系方式</a></li>
+                <li><a href="#projects" class="block py-2 text-gray-600 hover:text-blue-500">项目</a></li>
+                <li><a href="#about" class="block py-2 text-gray-600 hover:text-blue-500">关于</a></li>
+                <li><a href="#learning" class="block py-2 text-gray-600 hover:text-blue-500">学习</a></li>
             </ul>
         </div>
-    </header>
+    </nav>
 
     <!-- 英雄部分 -->
     <section class="py-20 bg-gradient-to-r from-blue-50 to-indigo-50">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 mb-10 md:mb-0 fade-in">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-                    你好，我是<span class="text-blue-500"> Kusoft</span>
-                </h2>
-                <p class="text-xl text-gray-600 mb-8">
-                    一名热爱技术的开发者，致力于构建创新的数字解决方案和科技社区。
-                </p>
-                <a href="#contact" class="btn-hover inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg transition">
-                    联系我
-                </a>
-            </div>
+        <div class="container mx-auto px-4 text-center" data-aos="fade-up">
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">
+                你好，我是 <span class="text-blue-500">NovBytes</span>
+            </h2>
+            <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                我正在学习编程基础，并探索如何构建像N-gram这样的语言模型！
+            </p>
+            <a href="#projects" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg transition">
+                查看我的项目
+            </a>
+        </div>
+    </section>
+
+    <!-- 项目部分 -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12" data-aos="fade-up">
+                我的<span class="text-blue-500"> 项目</span>
+            </h2>
             
-            <div class="md:w-1/2 flex justify-center fade-in delay-100">
-                <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
-                    <img src="https://i.pinimg.com/736x/d1/0f/fb/d10ffbecaeafd0ce33e1cbc9fc894688.jpg" 
-                         alt="Kusoft头像" 
-                         class="w-full h-full object-cover">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 项目1 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-language text-6xl text-blue-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">N-gram语言模型</h3>
+                        <p class="text-gray-600">一个基础的语言模型，使用N-gram技术进行文本预测。</p>
+                        <div class="mt-4 flex space-x-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Python</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">NLTK</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 项目2 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 bg-green-100 flex items-center justify-center">
+                        <i class="fas fa-keyboard text-6xl text-green-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">打字练习应用</h3>
+                        <p class="text-gray-600">帮助提高打字速度和准确性的简单应用。</p>
+                        <div class="mt-4 flex space-x-2">
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">JavaScript</span>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">HTML/CSS</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 项目3 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-48 bg-purple-100 flex items-center justify-center">
+                        <i class="fas fa-book text-6xl text-purple-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">词汇学习工具</h3>
+                        <p class="text-gray-600">帮助记忆新单词的简单闪卡应用。</p>
+                        <div class="mt-4 flex space-x-2">
+                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Python</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Tkinter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 学习部分 -->
+    <section id="learning" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12" data-aos="fade-up">
+                我的<span class="text-blue-500"> 学习</span> 旅程
+            </h2>
+            
+            <div class="max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">N-gram模型学习</h3>
+                    <p class="text-gray-600 mb-4">
+                        我正在学习如何构建N-gram语言模型，这是一种基于统计的语言模型，可以预测序列中的下一个项目。
+                    </p>
+                    <ul class="list-disc pl-5 text-gray-600">
+                        <li class="mb-2">理解马尔可夫假设</li>
+                        <li class="mb-2">实现unigram, bigram和trigram模型</li>
+                        <li class="mb-2">应用平滑技术处理未见n-gram</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">编程基础</h3>
+                    <p class="text-gray-600 mb-4">
+                        我正在巩固我的编程基础，为更高级的项目做准备。
+                    </p>
+                    <ul class="list-disc pl-5 text-gray-600">
+                        <li class="mb-2">Python编程语言</li>
+                        <li class="mb-2">数据结构与算法</li>
+                        <li class="mb-2">基本的Web开发(HTML/CSS/JavaScript)</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -141,192 +180,28 @@
 
     <!-- 关于部分 -->
     <section id="about" class="py-20 bg-white">
-        <div class="container mx-auto px-4 fade-in delay-200">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">
-                关于<span class="text-blue-500"> 我</span>
-            </h2>
-            
-            <div class="max-w-3xl mx-auto text-center">
-                <p class="text-lg text-gray-600 mb-6">
-                    我是Kusoft，一名全栈开发者，专注于创建现代化、响应式的Web应用。我有超过5年的开发经验，擅长使用各种前沿技术构建高效、用户友好的解决方案。
-                </p>
-                <p class="text-lg text-gray-600 mb-6">
-                    我的使命是通过技术连接人们，建立一个活跃的科技社区，分享知识并共同成长。我相信开放协作的力量，以及技术改变世界的潜力。
-                </p>
-                <p class="text-lg text-gray-600">
-                    当我不在编码时，我喜欢参加科技会议、撰写技术博客，并指导有抱负的开发者。
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 项目部分 -->
-    <section id="projects" class="py-20 bg-gray-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12 fade-in">
-                我的<span class="text-blue-500"> 项目</span>
-            </h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- 项目1 -->
-                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg fade-in delay-100">
-                    <div class="relative h-48">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
-                             alt="项目1" 
+            <div class="flex flex-col md:flex-row items-center" data-aos="fade-up">
+                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                    <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-blue-500 shadow-lg">
+                        <img src="https://i.pinimg.com/736x/d1/0f/fb/d10ffbecaeafd0ce33e1cbc9fc894688.jpg" 
+                             alt="NovBytes头像" 
                              class="w-full h-full object-cover">
-                        <div class="project-overlay absolute inset-0 flex items-end p-4">
-                            <div>
-                                <h3 class="text-white font-bold text-xl">社区平台</h3>
-                                <p class="text-gray-200">一个连接开发者的科技社区平台</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-gray-600">使用React、Node.js和MongoDB构建的全功能社区平台，支持实时聊天、知识分享和项目协作。</p>
                     </div>
                 </div>
-                
-                <!-- 项目2 -->
-                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg fade-in delay-200">
-                    <div class="relative h-48">
-                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
-                             alt="项目2" 
-                             class="w-full h-full object-cover">
-                        <div class="project-overlay absolute inset-0 flex items-end p-4">
-                            <div>
-                                <h3 class="text-white font-bold text-xl">AI工具集</h3>
-                                <p class="text-gray-200">一系列实用的AI驱动工具</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-gray-600">整合了多种AI API的工具集合，包括文本生成、图像处理和数据分析功能。</p>
-                    </div>
-                </div>
-                
-                <!-- 项目3 -->
-                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg fade-in delay-300">
-                    <div class="relative h-48">
-                        <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
-                             alt="项目3" 
-                             class="w-full h-full object-cover">
-                        <div class="project-overlay absolute inset-0 flex items-end p-4">
-                            <div>
-                                <h3 class="text-white font-bold text-xl">学习管理系统</h3>
-                                <p class="text-gray-200">在线教育平台</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-gray-600">一个功能丰富的LMS，支持课程创建、学生跟踪和互动学习体验。</p>
-                    </div>
-                </div>
-                
-                <!-- 项目4 -->
-                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg fade-in delay-100">
-                    <div class="relative h-48">
-                        <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
-                             alt="项目4" 
-                             class="w-full h-full object-cover">
-                        <div class="project-overlay absolute inset-0 flex items-end p-4">
-                            <div>
-                                <h3 class="text-white font-bold text-xl">数据分析仪表板</h3>
-                                <p class="text-gray-200">实时数据可视化工具</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-gray-600">使用D3.js和Chart.js构建的交互式数据可视化仪表板，支持多种数据源。</p>
-                    </div>
-                </div>
-                
-                <!-- 项目5 -->
-                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg fade-in delay-200">
-                    <div class="relative h-48">
-                        <img src="https://images.unsplash.com/photo-1481487196290-c152efe083f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
-                             alt="项目5" 
-                             class="w-full h-full object-cover">
-                        <div class="project-overlay absolute inset-0 flex items-end p-4">
-                            <div>
-                                <h3 class="text-white font-bold text-xl">电子商务平台</h3>
-                                <p class="text-gray-200">现代化在线商店</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-gray-600">基于Vue.js和Laravel构建的全功能电商解决方案，支持多种支付方式和库存管理。</p>
-                    </div>
-                </div>
-                
-                <!-- 项目6 -->
-                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg fade-in delay-300">
-                    <div class="relative h-48">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
-                             alt="项目6" 
-                             class="w-full h-full object-cover">
-                        <div class="project-overlay absolute inset-0 flex items-end p-4">
-                            <div>
-                                <h3 class="text-white font-bold text-xl">移动应用</h3>
-                                <p class="text-gray-200">跨平台生产力工具</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-gray-600">使用Flutter开发的跨平台移动应用，帮助用户提高日常工作效率。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 联系方式部分 -->
-    <section id="contact" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12 fade-in">
-                联系<span class="text-blue-500"> 我</span>
-            </h2>
-            
-            <div class="max-w-2xl mx-auto bg-gray-50 rounded-xl shadow-md overflow-hidden fade-in delay-100">
-                <div class="md:flex">
-                    <div class="md:w-1/2 bg-blue-500 p-8 flex flex-col justify-center">
-                        <h3 class="text-white text-xl font-bold mb-4">联系方式</h3>
-                        <p class="text-blue-100 mb-6">有兴趣合作或加入我们的社区吗？请随时联系我！</p>
-                        
-                        <div class="space-y-4">
-                            <div class="flex items-center">
-                                <i class="fas fa-envelope text-white mr-3"></i>
-                                <span class="text-white">contact@kusoft.fun</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-phone text-white mr-3"></i>
-                                <span class="text-white">private</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-map-marker-alt text-white mr-3"></i>
-                                <span class="text-white">中国，北京</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="md:w-1/2 p-8">
-                        <form>
-                            <div class="mb-4">
-                                <label for="name" class="block text-gray-700 mb-2">姓名</label>
-                                <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            </div>
-                            <div class="mb-4">
-                                <label for="email" class="block text-gray-700 mb-2">邮箱</label>
-                                <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            </div>
-                            <div class="mb-4">
-                                <label for="message" class="block text-gray-700 mb-2">消息</label>
-                                <textarea id="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-                            </div>
-                            <button type="submit" class="btn-hover w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg transition">
-                                发送消息
-                            </button>
-                        </form>
-                    </div>
+                <div class="md:w-2/3 md:pl-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6">
+                        关于<span class="text-blue-500"> 我</span>
+                    </h2>
+                    <p class="text-gray-600 mb-4">
+                        你好！我是NovBytes，一个编程爱好者和终身学习者。我对自然语言处理和计算语言学特别感兴趣。
+                    </p>
+                    <p class="text-gray-600 mb-4">
+                        目前，我正在学习编程基础知识和语言模型的基本原理，特别是N-gram模型。
+                    </p>
+                    <p class="text-gray-600">
+                        我相信通过不断学习和实践，我可以掌握这些技术并构建有趣的项目！
+                    </p>
                 </div>
             </div>
         </div>
@@ -334,49 +209,43 @@
 
     <!-- 页脚 -->
     <footer class="bg-gray-800 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0 fade-in">
-                    <h2 class="text-2xl font-bold">
-                        <span class="text-blue-400">Kusoft</span>.fun
-                    </h2>
-                    <p class="text-gray-400 mt-2">让我们建立一个科技社区</p>
-                </div>
-                
-                <div class="flex space-x-6 fade-in delay-100">
-                    <a href="#" class="text-gray-400 hover:text-white transition transform hover:-translate-y-1">
-                        <i class="fab fa-github text-2xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition transform hover:-translate-y-1">
-                        <i class="fab fa-twitter text-2xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition transform hover:-translate-y-1">
-                        <i class="fab fa-linkedin text-2xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition transform hover:-translate-y-1">
-                        <i class="fab fa-weixin text-2xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition transform hover:-translate-y-1">
-                        <i class="fab fa-youtube text-2xl"></i>
-                    </a>
-                </div>
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold mb-6" data-aos="fade-up">
+                <span class="text-blue-400">Nov</span>Bytes
+            </h2>
+            <div class="flex justify-center space-x-6 mb-6" data-aos="fade-up" data-aos-delay="100">
+                <a href="https://github.com/novbytes" class="text-gray-400 hover:text-white transition">
+                    <i class="fab fa-github text-2xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition">
+                    <i class="fab fa-twitter text-2xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition">
+                    <i class="fab fa-linkedin text-2xl"></i>
+                </a>
             </div>
-            
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 fade-in delay-200">
-                <p>&copy; 2025 Kusoft.fun 版权所有</p>
-            </div>
+            <p class="text-gray-400" data-aos="fade-up" data-aos-delay="200">
+                &copy; 2025 NovBytes. 保留所有权利。
+            </p>
         </div>
     </footer>
 
     <!-- JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // 移动菜单切换
+        //初始化AOS动画
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+        
+        //移动菜单切换
         document.getElementById('menu-toggle').addEventListener('click', function() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         });
         
-        // 平滑滚动
+        //平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -390,7 +259,7 @@
                         behavior: 'smooth'
                     });
                     
-                    // 如果是移动菜单，点击后隐藏
+                    //如果是移动菜单，点击后隐藏
                     const mobileMenu = document.getElementById('mobile-menu');
                     if (!mobileMenu.classList.contains('hidden')) {
                         mobileMenu.classList.add('hidden');
